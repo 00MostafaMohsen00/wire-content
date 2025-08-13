@@ -1,10 +1,10 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace WireContent\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class InstallCommand extends Command
 {
     public $signature = 'skeleton';
 

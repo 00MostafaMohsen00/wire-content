@@ -1,16 +1,17 @@
 <?php
 
-namespace VendorName\Skeleton\Facades;
+namespace WireContent\Facades;
 
 use Illuminate\Support\Facades\Facade;
+use WireContent\WireContentServiceProvider;
 
 /**
  * @see \VendorName\Skeleton\Skeleton
  */
-class Skeleton extends Facade
+class WireContent extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \VendorName\Skeleton\Skeleton::class;
+        return WireContentServiceProvider::class;
     }
 }
