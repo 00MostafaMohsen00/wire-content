@@ -9,6 +9,7 @@ use WireComments\Traits\Commentable;
 class Article extends Model
 {
     use Commentable;
+
     protected $fillable = [
         'title',
         'slug',
