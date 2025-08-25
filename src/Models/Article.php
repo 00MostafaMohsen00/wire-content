@@ -28,7 +28,7 @@ class Article extends Model
 
     public function image(): BelongsTo
     {
-        return $this->belongsTo(Media::class, 'media_id');
+        return $this->belongsTo(Media::class, 'media_id', 'id');
     }
 
     public function categories(): BelongsToMany
