@@ -17,7 +17,7 @@ class WireContentServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('wire-content')
-            //->hasConfigFile('wire-config')
+            // ->hasConfigFile('wire-config')
             ->hasViews()
             ->hasMigration('create_migration_table_name_table')
             ->hasCommand(InstallCommand::class);
