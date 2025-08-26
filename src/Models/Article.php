@@ -2,16 +2,18 @@
 
 namespace WireContent\Models;
 
+use App\ArticleStatus;
 use App\Models\Category;
 use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use WireComments\Traits\Commentable;
 
 class Article extends Model
 {
-    use Commentable;
+    use Commentable, SoftDeletes;
 
     protected $fillable = [
         'title',
@@ -19,6 +21,10 @@ class Article extends Model
         'content',
         'media_id',
         'user_id',
+    ];
+
+    protected $casts = [
+        'status' => ArticleStatus::class,
     ];
 
     public function User(): BelongsTo
