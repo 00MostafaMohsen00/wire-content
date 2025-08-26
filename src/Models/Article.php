@@ -26,6 +26,7 @@ class Article extends Model
     protected $casts = [
         'status' => ArticleStatus::class,
     ];
+
     public function User(): BelongsTo
     {
         return $this->belongsTo(config('auth.providers.users.model'));
