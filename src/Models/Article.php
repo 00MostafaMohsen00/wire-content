@@ -9,11 +9,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
+use RalphJSmit\Laravel\SEO\Support\HasSEO;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 use WireComments\Traits\Commentable;
 
 class Article extends Model
 {
-    use Commentable, SoftDeletes;
+    use Commentable, HasSEO, SoftDeletes;
 
     protected $fillable = [
         'title',
@@ -40,5 +43,17 @@ class Article extends Model
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class, 'article_category');
+    }
+
+    public function getDynamicSEOData(): SEOData
+    {
+        $this->loadMissing('image');
+        $pathToFeaturedImageRelativeToPublicPath = (string) $this->image?->url;
+
+        return new SEOData(
+            title: $this->title,
+            description: tiptap_converter()->asText(Str::limit($this->content, 160)),
+            image: $pathToFeaturedImageRelativeToPublicPath ?? 'media/placeholder.png',
+        );
     }
 }
