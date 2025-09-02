@@ -47,13 +47,11 @@ class Article extends Model
 
     public function getDynamicSEOData(): SEOData
     {
-        $this->loadMissing('image');
-        $pathToFeaturedImageRelativeToPublicPath = (string) $this->image?->url;
 
         return new SEOData(
             title: $this->title,
             description: tiptap_converter()->asText(Str::limit($this->content, 160)),
-            image: $pathToFeaturedImageRelativeToPublicPath ?? 'media/placeholder.png',
+            image: $this->image?->url,
         );
     }
 }
