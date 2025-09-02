@@ -48,7 +48,6 @@ class Article extends Model
     public function getDynamicSEOData(): SEOData
     {
 
-
         return new SEOData(
             title: $this->title,
             description: tiptap_converter()->asText(Str::limit($this->content, 160)),
