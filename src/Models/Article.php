@@ -19,7 +19,7 @@ use WireComments\Traits\Commentable;
 
 class Article extends Model implements Viewable
 {
-    use Commentable, HasSEO, SoftDeletes, InteractsWithViews;
+    use Commentable, HasSEO, InteractsWithViews, SoftDeletes;
 
     protected $fillable = [
         'title',
