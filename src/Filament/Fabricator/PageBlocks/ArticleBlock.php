@@ -8,7 +8,6 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use FilamentTiptapEditor\Enums\TiptapOutput;
 use FilamentTiptapEditor\TiptapEditor;
-use WireContent\Models\Article;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
 class ArticleBlock extends PageBlock
@@ -54,7 +53,6 @@ class ArticleBlock extends PageBlock
             ]);
     }
 
-
     public static function mutateData(array $data): array
     {
         return [
@@ -63,7 +61,7 @@ class ArticleBlock extends PageBlock
             'sort_by' => $data['sort_by'],
             'heading' => $data['heading'],
             'description' => $data['description'],
-            'show_load_more' => $data['show_load_more'] ?? false
+            'show_load_more' => $data['show_load_more'] ?? false,
         ];
     }
 }

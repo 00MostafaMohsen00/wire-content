@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Filament\Tiptap;
 
-use FilamentTiptapEditor\TiptapBlock;
-use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
+use FilamentTiptapEditor\TiptapBlock;
 
 final class Carousel extends TiptapBlock
 {

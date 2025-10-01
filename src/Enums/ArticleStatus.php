@@ -16,6 +16,6 @@ enum ArticleStatus: string
 
     public static function options()
     {
-        return collect(self::cases())->mapWithKeys(fn($status) => [$status->value => Str::title($status->name)]);
+        return collect(self::cases())->mapWithKeys(fn ($status) => [$status->value => Str::title($status->name)]);
     }
 }

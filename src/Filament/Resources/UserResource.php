@@ -13,7 +13,6 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
@@ -40,9 +39,9 @@ class UserResource extends Resource
                 TextColumn::make('roles.name'),
                 IconColumn::make('is_email_verified')
                     ->label('Email verified at')
-                    ->icon(fn($state): string => $state ? 'heroicon-o-check-circle' : 'heroicon-o-exclamation-circle')
-                    ->color(fn($state): string => $state ? 'success' : 'danger')
-                    ->tooltip(fn($state): string => $state ? 'Verified Email' : 'Unverified Email'),
+                    ->icon(fn ($state): string => $state ? 'heroicon-o-check-circle' : 'heroicon-o-exclamation-circle')
+                    ->color(fn ($state): string => $state ? 'success' : 'danger')
+                    ->tooltip(fn ($state): string => $state ? 'Verified Email' : 'Unverified Email'),
             ])
             ->filters([
                 //

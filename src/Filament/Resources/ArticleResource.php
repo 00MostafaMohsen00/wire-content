@@ -5,7 +5,6 @@ namespace App\Filament\Resources;
 use App\ArticleStatus;
 use App\Filament\Resources\ArticleResource\Pages;
 use App\Forms\Components\Slug;
-use WireContent\Models\Article;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
 use Filament\Forms\Components\Hidden;
@@ -24,6 +23,7 @@ use Filament\Tables\Table;
 use FilamentTiptapEditor\Enums\TiptapOutput;
 use FilamentTiptapEditor\TiptapEditor;
 use RalphJSmit\Filament\SEO\SEO;
+use WireContent\Models\Article;
 
 class ArticleResource extends Resource
 {

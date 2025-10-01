@@ -10,11 +10,14 @@ use WireContent\Models\Article;
 class ArticleGrid extends Component
 {
     public Collection $articles;
-    public $limit;
-    public $category;
-    public $sort_by;
-    public bool $show_load_more = false;
 
+    public $limit;
+
+    public $category;
+
+    public $sort_by;
+
+    public bool $show_load_more = false;
 
     public function mount()
     {
@@ -24,12 +27,15 @@ class ArticleGrid extends Component
     public function loadMore(): void
     {
         $offset = 0;
-        if (isset($this->articles)) $offset = $this->articles->count();
+        if (isset($this->articles)) {
+            $offset = $this->articles->count();
+        }
         $newArticles = $this->sort_by == 'popular' ? $this->getArticlesByViews($offset) : $this->getArticlesBySortOrder($offset);
-        if (isset($this->articles))
+        if (isset($this->articles)) {
             $this->articles = $this->aticles->merge($newArticles);
-        else
+        } else {
             $this->articles = $newArticles;
+        }
         $this->show_load_more = $newArticles->count() >= $this->limit;
     }
 
@@ -38,13 +44,13 @@ class ArticleGrid extends Component
         return Article::query()
             ->with('categories')
             ->whereHas('categories', function ($query) {
-                $query->whereIn('categories.id', (array)$this->category);
+                $query->whereIn('categories.id', (array) $this->category);
             });
     }
 
     private function getArticlesByViews(int $offset = 0): Collection
     {
-        $cacheKey = 'articles_by_views_' . implode('_', (array) $this->category) . '_offset_' . $offset;
+        $cacheKey = 'articles_by_views_'.implode('_', (array) $this->category).'_offset_'.$offset;
 
         return cache()->remember($cacheKey, now()->addMinutes(10), function () use ($offset) {
             return $this->getBaseQuery()
@@ -57,7 +63,7 @@ class ArticleGrid extends Component
 
     private function getArticlesBySortOrder(int $offset = 0): Collection
     {
-        $cacheKey = 'articles_by_sort_' . implode('_', (array) $this->category) . '_' . $this->sort_by . '_offset_' . $offset;
+        $cacheKey = 'articles_by_sort_'.implode('_', (array) $this->category).'_'.$this->sort_by.'_offset_'.$offset;
 
         return cache()->remember($cacheKey, now()->addMinutes(10), function () use ($offset) {
             $validColumns = ['created_at', 'updated_at'];

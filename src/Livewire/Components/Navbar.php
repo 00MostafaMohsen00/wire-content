@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Livewire\Components;
 
-use Livewire\Component;
-use Illuminate\View\View;
 use Datlechin\FilamentMenuBuilder\Models\Menu;
+use Illuminate\View\View;
+use Livewire\Component;
 
 final class Navbar extends Component
 {

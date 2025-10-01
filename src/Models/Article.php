@@ -19,7 +19,7 @@ use WireContent\Enums\ArticleStatus;
 
 class Article extends Model implements Viewable
 {
-    use Commentable, HasSEO, SoftDeletes, InteractsWithViews, Searchable;
+    use Commentable, HasSEO, InteractsWithViews, Searchable, SoftDeletes;
 
     protected $fillable = [
         'title',

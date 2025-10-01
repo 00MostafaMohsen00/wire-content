@@ -12,9 +12,9 @@ use Dotswan\FilamentLaravelPulse\Widgets\PulseSlowRequests;
 use Dotswan\FilamentLaravelPulse\Widgets\PulseUsage;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
+use Filament\Pages\Dashboard as BaseDashboard;
 use Filament\Pages\Dashboard\Concerns\HasFiltersAction;
 use Filament\Support\Enums\ActionSize;
-use Filament\Pages\Dashboard as BaseDashboard;
 
 class Dashboard extends BaseDashboard
 {
@@ -30,17 +30,17 @@ class Dashboard extends BaseDashboard
         return [
             ActionGroup::make([
                 Action::make('1h')
-                    ->action(fn() => $this->redirect(route('filament.admin.pages.dashboard'))),
+                    ->action(fn () => $this->redirect(route('filament.admin.pages.dashboard'))),
                 Action::make('24h')
-                    ->action(fn() => $this->redirect(route('filament.admin.pages.dashboard', ['period' => '24_hours']))),
+                    ->action(fn () => $this->redirect(route('filament.admin.pages.dashboard', ['period' => '24_hours']))),
                 Action::make('7d')
-                    ->action(fn() => $this->redirect(route('filament.admin.pages.dashboard', ['period' => '7_days']))),
+                    ->action(fn () => $this->redirect(route('filament.admin.pages.dashboard', ['period' => '7_days']))),
             ])
                 ->label(__('Filter'))
                 ->icon('heroicon-m-funnel')
                 ->size(ActionSize::Small)
                 ->color('gray')
-                ->button()
+                ->button(),
         ];
     }
 
@@ -54,7 +54,7 @@ class Dashboard extends BaseDashboard
             PulseQueues::class,
             PulseSlowQueries::class,
             PulseSlowRequests::class,
-            PulseSlowOutGoingRequests::class
+            PulseSlowOutGoingRequests::class,
         ];
     }
 }

@@ -8,16 +8,16 @@ use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use RalphJSmit\Laravel\SEO\Support\HasSEO;
-use RalphJSmit\Laravel\SEO\Support\SEOData;
-use WireContent\Models\Article;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
+use RalphJSmit\Laravel\SEO\Support\HasSEO;
+use RalphJSmit\Laravel\SEO\Support\SEOData;
 
 class Category extends Model
 {
     use HasSEO;
     use Searchable;
+
     protected $fillable = [
         'title',
         'slug',

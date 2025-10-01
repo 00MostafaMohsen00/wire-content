@@ -27,7 +27,6 @@ class CarouselBlock extends PageBlock
             ]);
     }
 
-
     public static function mutateData(array $data): array
     {
         return $data;

@@ -9,6 +9,7 @@ use WireContent\Models\Article;
 class ArticleCard extends Component
 {
     public Article $article;
+
     public function render(): View
     {
         return view('livewire.components.article-card');

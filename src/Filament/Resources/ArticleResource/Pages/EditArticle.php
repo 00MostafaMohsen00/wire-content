@@ -22,6 +22,7 @@ class EditArticle extends EditRecord
 
         parent::save($shouldRedirect, $shouldSendSavedNotifiction);
     }
+
     protected function getHeaderActions(): array
     {
         return [
