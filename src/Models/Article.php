@@ -2,8 +2,6 @@
 
 namespace WireContent\Models;
 
-use App\ArticleStatus;
-use App\Models\Category;
 use Awcodes\Curator\Models\Media;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
@@ -13,13 +11,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use Laravel\Scout\Searchable;
 use RalphJSmit\Laravel\SEO\Support\HasSEO;
 use RalphJSmit\Laravel\SEO\Support\SEOData;
 use WireComments\Traits\Commentable;
+use WireContent\Enums\ArticleStatus;
 
 class Article extends Model implements Viewable
 {
-    use Commentable, HasSEO, InteractsWithViews, SoftDeletes;
+    use Commentable, HasSEO, InteractsWithViews, Searchable, SoftDeletes;
 
     protected $fillable = [
         'title',
