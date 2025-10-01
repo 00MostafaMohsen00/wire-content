@@ -21,7 +21,6 @@ class Article extends Model implements Viewable
 {
     use Commentable, HasSEO, InteractsWithViews, Searchable, SoftDeletes;
 
-
     protected $fillable = [
         'title',
         'slug',
